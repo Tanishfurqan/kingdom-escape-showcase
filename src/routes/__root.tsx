@@ -11,6 +11,9 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Nav } from "../components/site/Nav";
+import { Footer } from "../components/site/Footer";
+import { WhatsAppFab } from "../components/site/WhatsAppFab";
 
 function NotFoundComponent() {
   return (
@@ -121,8 +124,12 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <Nav />
+      <main className="pt-0">
+        <Outlet />
+      </main>
+      <Footer />
+      <WhatsAppFab />
     </QueryClientProvider>
   );
 }
