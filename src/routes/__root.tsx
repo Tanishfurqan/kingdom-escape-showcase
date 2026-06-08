@@ -11,6 +11,9 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Nav } from "../components/site/Nav";
+import { Footer } from "../components/site/Footer";
+import { WhatsAppFab } from "../components/site/WhatsAppFab";
 
 function NotFoundComponent() {
   return (
@@ -77,20 +80,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Sugriva's Kingdom Resort — Boutique Stay in Hampi" },
+      { name: "description", content: "A boutique heritage resort beside the paddy fields and boulders of Hampi. Private balconies, bamboo dining, easy temple access. Book on WhatsApp." },
+      { name: "author", content: "Sugriva's Kingdom" },
+      { property: "og:title", content: "Sugriva's Kingdom Resort — Hampi" },
+      { property: "og:description", content: "Boutique heritage resort beside Hampi's boulders and paddy fields. Book your stay on WhatsApp." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Sugriva's Kingdom" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -118,8 +124,12 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <Nav />
+      <main className="pt-0">
+        <Outlet />
+      </main>
+      <Footer />
+      <WhatsAppFab />
     </QueryClientProvider>
   );
 }
