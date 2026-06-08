@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as RoomsRouteImport } from './routes/rooms'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ExperiencesRouteImport } from './routes/experiences'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
 
 const RoomsRoute = RoomsRouteImport.update({
@@ -29,6 +30,11 @@ const ExperiencesRoute = ExperiencesRouteImport.update({
   path: '/experiences',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +43,14 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/experiences': typeof ExperiencesRoute
   '/gallery': typeof GalleryRoute
   '/rooms': typeof RoomsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/experiences': typeof ExperiencesRoute
   '/gallery': typeof GalleryRoute
   '/rooms': typeof RoomsRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/experiences': typeof ExperiencesRoute
   '/gallery': typeof GalleryRoute
   '/rooms': typeof RoomsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/experiences' | '/gallery' | '/rooms'
+  fullPaths: '/' | '/contact' | '/experiences' | '/gallery' | '/rooms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/experiences' | '/gallery' | '/rooms'
-  id: '__root__' | '/' | '/experiences' | '/gallery' | '/rooms'
+  to: '/' | '/contact' | '/experiences' | '/gallery' | '/rooms'
+  id: '__root__' | '/' | '/contact' | '/experiences' | '/gallery' | '/rooms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
   ExperiencesRoute: typeof ExperiencesRoute
   GalleryRoute: typeof GalleryRoute
   RoomsRoute: typeof RoomsRoute
@@ -92,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExperiencesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
   ExperiencesRoute: ExperiencesRoute,
   GalleryRoute: GalleryRoute,
   RoomsRoute: RoomsRoute,
