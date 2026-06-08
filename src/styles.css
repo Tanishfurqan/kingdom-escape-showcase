@@ -59,29 +59,47 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-terracotta: var(--terracotta);
+  --color-sandstone: var(--sandstone);
+  --color-palm: var(--palm);
+  --color-gold: var(--gold);
+  --color-ivory: var(--ivory);
+  --color-ink: var(--ink);
+  --color-whatsapp: var(--whatsapp);
+  --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --radius: 0.5rem;
+  /* Hampi palette: ivory page, terracotta accent, palm green, gold */
+  --ivory: oklch(0.975 0.012 85);
+  --sandstone: oklch(0.88 0.04 70);
+  --terracotta: oklch(0.58 0.15 38);
+  --palm: oklch(0.32 0.06 145);
+  --gold: oklch(0.72 0.13 80);
+  --ink: oklch(0.22 0.02 60);
+  --whatsapp: oklch(0.62 0.16 150);
+
+  --background: var(--ivory);
+  --foreground: var(--ink);
+  --card: oklch(0.99 0.008 85);
+  --card-foreground: var(--ink);
+  --popover: oklch(0.99 0.008 85);
+  --popover-foreground: var(--ink);
+  --primary: var(--terracotta);
+  --primary-foreground: oklch(0.985 0.01 85);
+  --secondary: var(--palm);
+  --secondary-foreground: oklch(0.985 0.01 85);
+  --muted: oklch(0.93 0.02 75);
+  --muted-foreground: oklch(0.42 0.03 60);
+  --accent: var(--gold);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.55 0.22 27);
+  --destructive-foreground: oklch(0.99 0.01 85);
+  --border: oklch(0.86 0.03 70);
+  --input: oklch(0.86 0.03 70);
+  --ring: var(--terracotta);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -140,5 +158,33 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-body);
+    font-feature-settings: "ss01", "cv11";
   }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: var(--terracotta);
+    color: var(--ivory);
+  }
+}
+
+@utility container-x {
+  padding-inline: 1.25rem;
+  margin-inline: auto;
+  max-width: 80rem;
+  @media (min-width: 768px) { padding-inline: 2rem; }
+}
+
+@utility eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--terracotta);
 }
