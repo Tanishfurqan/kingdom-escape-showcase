@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RoomsRouteImport } from './routes/rooms'
 import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as ExperiencesRouteImport } from './routes/experiences'
 import { Route as IndexRouteImport } from './routes/index'
 
 const RoomsRoute = RoomsRouteImport.update({
@@ -23,6 +24,11 @@ const GalleryRoute = GalleryRouteImport.update({
   path: '/gallery',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExperiencesRoute = ExperiencesRouteImport.update({
+  id: '/experiences',
+  path: '/experiences',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,30 +37,34 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/experiences': typeof ExperiencesRoute
   '/gallery': typeof GalleryRoute
   '/rooms': typeof RoomsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/experiences': typeof ExperiencesRoute
   '/gallery': typeof GalleryRoute
   '/rooms': typeof RoomsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/experiences': typeof ExperiencesRoute
   '/gallery': typeof GalleryRoute
   '/rooms': typeof RoomsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/gallery' | '/rooms'
+  fullPaths: '/' | '/experiences' | '/gallery' | '/rooms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/gallery' | '/rooms'
-  id: '__root__' | '/' | '/gallery' | '/rooms'
+  to: '/' | '/experiences' | '/gallery' | '/rooms'
+  id: '__root__' | '/' | '/experiences' | '/gallery' | '/rooms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ExperiencesRoute: typeof ExperiencesRoute
   GalleryRoute: typeof GalleryRoute
   RoomsRoute: typeof RoomsRoute
 }
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/experiences': {
+      id: '/experiences'
+      path: '/experiences'
+      fullPath: '/experiences'
+      preLoaderRoute: typeof ExperiencesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ExperiencesRoute: ExperiencesRoute,
   GalleryRoute: GalleryRoute,
   RoomsRoute: RoomsRoute,
 }
