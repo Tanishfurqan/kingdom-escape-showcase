@@ -83,11 +83,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Sugriva's Kingdom Resort — Boutique Stay in Hampi" },
       { name: "description", content: "A boutique heritage resort beside the paddy fields and boulders of Hampi. Private balconies, bamboo dining, easy temple access. Book on WhatsApp." },
       { name: "author", content: "Sugriva's Kingdom" },
-      { property: "og:title", content: "Sugriva's Kingdom Resort — Hampi" },
-      { property: "og:description", content: "Boutique heritage resort beside Hampi's boulders and paddy fields. Book your stay on WhatsApp." },
+      { property: "og:title", content: "Sugriva's Kingdom Resort — Boutique Stay in Hampi" },
+      { property: "og:description", content: "A boutique heritage resort beside the paddy fields and boulders of Hampi. Private balconies, bamboo dining, easy temple access. Book on WhatsApp." },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Sugriva's Kingdom" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "Sugriva's Kingdom Resort — Boutique Stay in Hampi" },
+      { name: "twitter:description", content: "A boutique heritage resort beside the paddy fields and boulders of Hampi. Private balconies, bamboo dining, easy temple access. Book on WhatsApp." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8231aa0a-4670-4550-b3c7-f17a6acb8593/id-preview-9037c138--7941cb42-9edc-4a72-b35f-fc8f2a6e20c9.lovable.app-1782628768648.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8231aa0a-4670-4550-b3c7-f17a6acb8593/id-preview-9037c138--7941cb42-9edc-4a72-b35f-fc8f2a6e20c9.lovable.app-1782628768648.png" },
     ],
     links: [
       {
